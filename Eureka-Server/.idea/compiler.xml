@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Eureka-Consumer-3" />
+        <module name="Eureka-Consumer-2" />
+        <module name="Eureka-Consumer-1" />
+        <module name="Eureka-Provider-3" />
+        <module name="Eureka-Provider-2" />
+        <module name="Eureka-Provider-1" />
+        <module name="Eureka-Server" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="11">
+      <module name="Dubbo-Provider" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Eureka-Consumer-1" options="-parameters" />
+      <module name="Eureka-Consumer-2" options="-parameters" />
+      <module name="Eureka-Consumer-3" options="-parameters" />
+      <module name="Eureka-Provider-1" options="-parameters" />
+      <module name="Eureka-Provider-2" options="-parameters" />
+      <module name="Eureka-Provider-3" options="-parameters" />
+      <module name="Eureka-Server" options="-parameters" />
+    </option>
+  </component>
+</project>
