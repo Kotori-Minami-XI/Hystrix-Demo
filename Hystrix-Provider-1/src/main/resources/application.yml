@@ -11,3 +11,18 @@ eureka:
   instance:
     prefer-ip-address: true # 当调用getHostname获取实例的hostname时，返回ip而不是host名称
     ip-address: 127.0.0.1 # 指定自己的ip信息，不指定的话会自己寻找
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+      circuitBreaker:
+        enabled: true
+        requestVolumeThreshold: 5   # 该属性设置滚动窗口中将使断路器跳闸的最小请求数量
+        #forceOpen: true
+      metrics:
+        rollingStats:
+          timeInMilliseconds: 30000

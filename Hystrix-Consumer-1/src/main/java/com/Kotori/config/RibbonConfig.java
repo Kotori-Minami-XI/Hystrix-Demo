@@ -13,10 +13,11 @@ public class RibbonConfig {
     @LoadBalanced
     @Bean
     public RestTemplate rest() {
-        SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
-        requestFactory.setConnectTimeout(1000);
-        requestFactory.setReadTimeout(1000);
-        return new RestTemplate(requestFactory);
+//        SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
+//        requestFactory.setConnectTimeout(9000);
+//        requestFactory.setReadTimeout(9000);
+//        return new RestTemplate(requestFactory);
+        return new RestTemplate();
     }
 
     @Bean
