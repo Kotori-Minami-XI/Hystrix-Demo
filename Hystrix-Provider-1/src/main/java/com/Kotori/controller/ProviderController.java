@@ -9,8 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProviderController {
     @ResponseBody
     @RequestMapping("/provider0")
+    @HystrixCommand(fallbackMethod = "globalFallback")
     public String provider0(String name) {
         return name + ", Welcome to Spring Boot. I am provider2";
+    }
+    private String globalFallback(String name) {
+        System.out.println("-----------------------globalFallback");
+        return "globalFallback";
     }
 
     @ResponseBody
@@ -27,12 +32,8 @@ public class ProviderController {
 
     @ResponseBody
     @RequestMapping("/provider2")
-    public String provider2(String name) {
-        try {
-            Thread.sleep(3000);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public String provider2(String name) throws InterruptedException {
+        Thread.sleep(3000);
         return name + ", Welcome to Spring Boot. I am provider2";
     }
 
