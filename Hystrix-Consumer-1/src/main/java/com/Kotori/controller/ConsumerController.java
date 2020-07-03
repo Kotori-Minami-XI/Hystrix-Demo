@@ -15,6 +15,12 @@ public class ConsumerController {
     @Autowired
     private RestTemplate restTemplate;
 
+    @ResponseBody
+    @RequestMapping("/consumer0")
+    public String consumer0(String name) {
+        return restTemplate.getForObject("http://hystrix-provider-group/provider0?name=" + name, String.class);
+    }
+
     /***
      * 异常降级处理
      * http://127.0.0.1:8001/consumer1?name=wc
@@ -38,5 +44,20 @@ public class ConsumerController {
     private String timeoutFallback(String name) {
         System.out.println("-----------------------timeoutFallback");
         return "timeoutFallback";
+    }
+
+    /***
+     * 宕机降级处理
+     * http://127.0.0.1:8001/consumer3?name=ww
+     */
+    @ResponseBody
+    @RequestMapping("/consumer3")
+    @HystrixCommand(fallbackMethod = "downFallback")
+    public String consumer3(String name) {
+        return restTemplate.getForObject("http://hystrix-provider-group/provider3?name=" + name, String.class);
+    }
+    private String downFallback(String name) {
+        System.out.println("-----------------------downFallback");
+        return "downFallback";
     }
 }

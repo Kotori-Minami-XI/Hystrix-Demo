@@ -8,6 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ProviderController {
     @ResponseBody
+    @RequestMapping("/provider0")
+    public String provider0(String name) {
+        return name + ", Welcome to Spring Boot. I am provider2";
+    }
+
+    @ResponseBody
     @RequestMapping("/provider1")
     @HystrixCommand(fallbackMethod = "exceptionFallback")
     public String provider1(String name) {
@@ -29,4 +35,5 @@ public class ProviderController {
         }
         return name + ", Welcome to Spring Boot. I am provider2";
     }
+
 }
